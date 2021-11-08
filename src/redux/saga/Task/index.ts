@@ -20,7 +20,7 @@ import { SearchTask, AddTask, UpdateTask } from "../../../models";
 import taskAPI from "../../../api/Task";
 import { API } from "../../../constants/API";
 import { notification } from "../../../Components/Notification";
-import { push } from "connected-react-router";
+import history from "../../../utils/history";
 function* watching1() {
   while (true) {
     // usually using while when using take
@@ -86,6 +86,9 @@ function* deleteTaskSaga(data: SearchTask) {
   }
   yield put(loading(false));
 }
+function forwardTo(location: string) {
+  history.push(location);
+}
 function* updateTaskSaga(data: UpdateTask) {
   console.log(data);
   yield put(loading(true));
@@ -100,7 +103,7 @@ function* updateTaskSaga(data: UpdateTask) {
       task[index] = response.data;
       yield put(updateTaskSuccess([...task]));
       notification("success", 3000, "Update Task");
-      yield put(push("/test"))
+      yield call(forwardTo, '/test');
     }
   }
   yield put(loading(false));

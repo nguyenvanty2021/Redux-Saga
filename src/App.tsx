@@ -2,11 +2,13 @@ import React from 'react'
 import './App.css'
 import routes from './config/routes'
 import { RouteComponentProps } from 'react-router'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch,Router } from 'react-router-dom'
+import history from './utils/history'
 function App() {
   return (
     <main>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
+      <Router history={history}>
         <Switch>
           {routes.map((route, index) => {
             return (
@@ -22,7 +24,8 @@ function App() {
           })}
           {/* <Route path="/todo" component={ToDoPage}/> */}
         </Switch>
-      </BrowserRouter>
+      </Router>
+      {/* </BrowserRouter> */}
     </main>
   )
 }

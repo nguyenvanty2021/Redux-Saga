@@ -10,7 +10,7 @@ import Loading from './Components/Loading'
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter } from 'react-router-dom'
 import { ConnectedRouter } from 'connected-react-router'
-import { history } from './utils/history'
+// import { history } from './utils/history'
 const store = configureStore()
 ReactDOM.render(
   <React.StrictMode>
